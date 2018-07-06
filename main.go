@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/jleight/omxplayer"
 	"github.com/otium/ytdl"
+	"github.com/yukpiz/omxplayer"
 	"os"
 	"path/filepath"
 	"strconv"
