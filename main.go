@@ -1,22 +1,23 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"github.com/otium/ytdl"
-	"github.com/yukpiz/omxplayer"
 	"os"
-	"path/filepath"
 	"strconv"
+)
+
+var (
+	url = flag.String("t", "", "Youtube video URL.")
 )
 
 func main() {
 	fmt.Println("===> START MAIN")
-	url := "https://www.youtube.com/watch?v=6UoatE5DXJw"
-	fmt.Println("Download: " + url)
-	filename := download(url)
-
-	dir, _ := filepath.Abs(filepath.Dir(filename))
-	play(filepath.Join(dir, filename))
+	flag.Parse()
+	fmt.Println("Download: " + *url)
+	filename := download(*url)
+	fmt.Println("Downloaded:" + filename)
 }
 
 func download(url string) string {
@@ -46,12 +47,4 @@ func download(url string) string {
 		os.Exit(1)
 	}
 	return file.Name()
-}
-
-func play(file string) {
-	fmt.Println("Playing: " + file)
-	player, err := omxplayer.New(file, "--no-osd")
-	fmt.Println(player)
-	fmt.Println(err)
-	player.WaitForReady()
 }
