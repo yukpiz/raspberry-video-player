@@ -53,4 +53,5 @@ func play(file string) {
 	player, err := omxplayer.New(file, "--no-osd")
 	fmt.Println(player)
 	fmt.Println(err)
+	player.WaitForReady()
 }
