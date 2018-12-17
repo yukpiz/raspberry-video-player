@@ -1,0 +1,5 @@
+#/bin/bash
+
+mv *.mp4 musics/
+go run main.go -t $1
+scp *.mp4 pi@192.168.1.122:~/labo/repos/private/raspberry-video-player/

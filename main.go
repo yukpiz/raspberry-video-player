@@ -15,6 +15,10 @@ var (
 func main() {
 	fmt.Println("===> START MAIN")
 	flag.Parse()
+	if *url == "" {
+		fmt.Println("Please -t [URL]")
+		os.Exit(1)
+	}
 	fmt.Println("Download: " + *url)
 	filename := download(*url)
 	fmt.Println("Downloaded:" + filename)
